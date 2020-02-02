@@ -1,5 +1,6 @@
-import discord 
+import discord
 import random
+import datetime
 
 class MyClient(discord.Client):
     #Einlogen
@@ -12,6 +13,7 @@ class MyClient(discord.Client):
         #Wenn die nachricht von dem bot selber ist dann wird es ignoriert
         if message.author != client.user:
             print("Nachricht von " + str(message.author) + " enthält " + str(message.content))
+            open("logs/log " + str(datetime.date.today()) + ".txt", "a").write("Nachricht von: " + str(message.author) + ". Enthält: " + str(message.content) + "\n")
 
         #Sende Nachricht
         if message.author != client.user:
@@ -43,7 +45,11 @@ class MyClient(discord.Client):
                     bid_param = -2
                 else:
                     try:
-                        bid_param = int(bid)
+                        if int(bid) < 36 and int(bid) > 0:
+                            bid_param = int(bid)
+                        else:
+                            await message.channel.send("Die angegebene zahl ist zu groß/zu klein")
+                            return
                     except:
                         bid_param = -3
                 if bid_param == -3:
@@ -61,5 +67,10 @@ class MyClient(discord.Client):
                 elif not won:
                     await message.channel.send(self.vorzeichen*3 + " Leider verloren " + self.vorzeichen*3)
 
-client = MyClient()
-client.run("")
+try:
+    client = MyClient()
+    client.run("")
+except KeyboardInterrupt:
+    print("Exiting ...")
+    client.f.close()
+    exit()
