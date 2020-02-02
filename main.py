@@ -23,7 +23,7 @@ class MyClient(discord.Client):
             elif message.content.startswith("Doch"):
                 await message.author.send("Nope")
 
-        #hel
+        #help
         if message.author != client.user:
             if str(message.content).lower() == self.vorzeichen + "help":
                 await message.channel.send("$roulette für roulette parameter: black/red number")
