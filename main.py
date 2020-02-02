@@ -62,4 +62,4 @@ class MyClient(discord.Client):
                     await message.channel.send(self.vorzeichen*3 + " Leider verloren " + self.vorzeichen*3)
 
 client = MyClient()
-client.run("NjczNDgwMjMzMDA5MjgzMDgy.Xjaprw.NP7nbwmPjGDiCFL2rvIAUBT-SG4")
+client.run("")
