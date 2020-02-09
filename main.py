@@ -13,7 +13,6 @@ class MyClient(discord.Client):
         #Wenn die nachricht von dem bot selber ist dann wird es ignoriert
         if message.author != client.user:
             print("Nachricht von " + str(message.author) + " enthält " + str(message.content))
-            open("logs/log " + str(datetime.date.today()) + ".txt", "a").write("Nachricht von: " + str(message.author) + ". Enthält: " + str(message.content) + "\n")
 
         #Sende Nachricht
         if message.author != client.user:
